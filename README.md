@@ -1,2 +1,2 @@
-# Hunting.script
+# Hunting script
 Hunting Script FiveM QB-CORE

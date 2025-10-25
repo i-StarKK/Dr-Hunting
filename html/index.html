@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hunting Station</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+    <div class="hunt-ui" id="huntingUI" style="display: none;">
+        
+        <div class="top-bar">
+            <div class="logo-area">
+                <img src="" id="mainLogo" class="main-logo-img" alt="">
+            </div>
+            <div class="title-area">
+                <h1>WILDERNESS HUNTING STATION</h1>
+                <span class="subtitle-line">PROFESSIONAL GAME TRADING • EST. 2013</span>
+            </div>
+        </div>
+
+        <div class="main-area">
+            <div class="left-side">
+                <div class="card-title">
+                    <span id="icon-stats-title"></span>
+                    <span>STATISTICS</span>
+                </div>
+                
+                <div class="stats-box">
+                    <div class="stat-line">
+                        <div class="stat-left">
+                            <span id="icon-hunts"></span>
+                            <span>TOTAL HUNTS</span>
+                        </div>
+                        <span class="stat-val" id="totalHunts">0</span>
+                    </div>
+                    
+                    <div class="stat-line">
+                        <div class="stat-left">
+                            <span id="icon-animals"></span>
+                            <span>ANIMALS HUNTED</span>
+                        </div>
+                        <span class="stat-val" id="totalSkins">0</span>
+                    </div>
+                    
+                    <div class="stat-line">
+                        <div class="stat-left">
+                            <span id="icon-money"></span>
+                            <span>TOTAL EARNED</span>
+                        </div>
+                        <span class="stat-val" id="totalEarned">$0</span>
+                    </div>
+                    
+                    <div class="stat-line gold">
+                        <div class="stat-left">
+                            <span id="icon-stored"></span>
+                            <span>STORED PELTS</span>
+                        </div>
+                        <span class="stat-val" id="collectedSkins">0</span>
+                    </div>
+                    
+                    <div class="stat-line green">
+                        <div class="stat-left">
+                            <span id="icon-session"></span>
+                            <span>CURRENT SESSION</span>
+                        </div>
+                        <span class="stat-val" id="currentSkins">0</span>
+                    </div>
+                </div>
+                
+                <button class="view-btn" onclick="showAnimals()">
+                    <span id="icon-viewList"></span>
+                    <span>VIEW RECORDS</span>
+                </button>
+            </div>
+
+            <div class="right-side">
+                <div class="card-title">
+                    <span id="icon-header"></span>
+                    <span>INSTRUCTIONS</span>
+                </div>
+                
+                <div class="steps-area">
+                    <div class="step-card">
+                        <div class="step-top">
+                            <span id="icon-step1"></span>
+                            <span class="roman">I</span>
+                        </div>
+                        <h3>START MISSION</h3>
+                        <p>Get vehicle and go to zone</p>
+                    </div>
+                    
+                    <div class="step-card">
+                        <div class="step-top">
+                            <span id="icon-step2"></span>
+                            <span class="roman">II</span>
+                        </div>
+                        <h3>HUNT & SKIN</h3>
+                        <p>Kill and harvest animals</p>
+                    </div>
+                    
+                    <div class="step-card">
+                        <div class="step-top">
+                            <span id="icon-step3"></span>
+                            <span class="roman">III</span>
+                        </div>
+                        <h3>END MISSION</h3>
+                        <p>Return and store pelts</p>
+                    </div>
+                    
+                    <div class="step-card">
+                        <div class="step-top">
+                            <span id="icon-step4"></span>
+                            <span class="roman">IV</span>
+                        </div>
+                        <h3>TRADE PELTS</h3>
+                        <p>Deliver for payment</p>
+                    </div>
+                </div>
+
+                <div class="reward-area">
+                    <div class="reward-card">
+                        <span id="icon-reward-money"></span>
+                        <div>
+                            <span class="reward-label">PAYMENT</span>
+                            <span class="reward-val">$200 / PELT</span>
+                        </div>
+                    </div>
+                    <div class="reward-card">
+                        <span id="icon-reward-knife"></span>
+                        <div>
+                            <span class="reward-label">REQUIRED</span>
+                            <span class="reward-val">KNIFE</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="buttons-area">
+                    <button class="hunt-btn start" onclick="startHunt()" id="startBtn">
+                        <span id="icon-btn-start"></span>
+                        <span>START HUNT</span>
+                    </button>
+                    
+                    <button class="hunt-btn end" onclick="endMission()" id="endBtn" style="display: none;">
+                        <span id="icon-btn-end"></span>
+                        <span>END MISSION</span>
+                    </button>
+                    
+                    <button class="hunt-btn trade" onclick="collectSkins()" id="collectBtn">
+                        <span id="icon-btn-collect"></span>
+                        <span>COLLECT & TRADE</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="bottom-bar">
+            <span id="icon-footer"></span>
+            <span>WILDERNESS TRADING CO. • PRESS ESC TO CLOSE</span>
+        </div>
+    </div>
+
+    <div class="animals-popup" id="animalsModal" style="display: none;">
+        <div class="popup-box">
+            <div class="popup-header">
+                <h2>HUNTING RECORDS</h2>
+                <button class="popup-close" onclick="closeAnimals()">✕</button>
+            </div>
+            <div class="popup-body" id="animalsList"></div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
